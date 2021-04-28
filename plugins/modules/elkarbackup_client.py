@@ -266,13 +266,15 @@ def run_module():
         else:
             client = {
                 'description': module.params['description'],
-                'isActive': module.params['isActive'],
-                'maxParallelJobs': module.params['maxParallelJobs'],
+                'isActive': module.params['is_active'],
+                'maxParallelJobs': module.params['max_parallel_jobs'],
                 'name': module.params['name'],
+                'preScripts': module.params['pre_scripts'],
+                'postScripts': module.params['post_scripts'],
                 'quota': module.params['quota'],
-                'rsyncLongArgs': module.params['rsyncLongArgs'],
-                'rsyncShortArgs': module.params['rsyncShortArgs'],
-                'sshArgs': module.params['sshArgs'],
+                'rsyncLongArgs': module.params['rsync_long_args'],
+                'rsyncShortArgs': module.params['rsync_short_args'],
+                'sshArgs': module.params['ssh_args'],
                 'url': module.params['url']
             }
             id = create_client(api_url, api_user, api_password, client)
