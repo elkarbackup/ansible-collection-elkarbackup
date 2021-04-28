@@ -231,11 +231,11 @@ def run_module():
             if client['name'] != module.params['name']:
                 client['name'] = module.params['name']
                 changed = True
-            if set(client['postScript']) != set(module.params['post_scripts']):
-                client['postScript'] = module.params['post_scripts']
+            if set(client['postScripts']) != set(module.params['post_scripts']):
+                client['postScripts'] = module.params['post_scripts']
                 changed = True
-            if set(client['preScript']) != set(module.params['pre_scripts']):
-                client['preScript'] = module.params['pre_scripts']
+            if set(client['preScripts']) != set(module.params['pre_scripts']):
+                client['preScripts'] = module.params['pre_scripts']
                 changed = True
             if client['quota'] != module.params['quota']:
                 client['quota'] = module.params['quota']
