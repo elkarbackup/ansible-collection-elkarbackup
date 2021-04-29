@@ -3,12 +3,10 @@
 
 # Copyright: (c) 2021, Eneko Lacunza <elacunza@binovo.es>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
-from __future__ import (absolute_import, division, print_function)
-from compose import state
-import json
-import sys
 
-__metaclass__ = type
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
 DOCUMENTATION = r'''
 ---
@@ -29,7 +27,7 @@ options:
         description: API URL without '/api' part, i.e. http://localhost:8000 .
         required: true
         type: string
-    api_user
+    api_user:
         description: User for API authentication. This is a regular ADMIN user as of 2.1.x .
         required: true
         type: string
@@ -83,9 +81,6 @@ options:
         default: ''
         type: str
         
-extends_documentation_fragment:
-    - elkarbackup.elkarbackup.elkarbackup_client
-
 author:
     - Eneko Lacunza - Binovo IT Human Project SL (@elacunza)
 '''
@@ -146,9 +141,16 @@ api_result:
     sample: {"detail": "Script \"1\" is not a client pre script", "title": "An error occurred"}
 '''
 
+from __future__ import (absolute_import, division, print_function)
+from compose import state
+import json
+import sys
 from ansible.module_utils.basic import AnsibleModule
 import requests
 from requests.auth import HTTPBasicAuth
+
+__metaclass__ = type
+
 
 
 def create_client(api_url, api_user, api_password, client):
