@@ -1,5 +1,9 @@
-# ansible-collection-elkarbackup: manage Elkarbackup with ansible
+#Ansible collection for Elkarbackup
 
-This project has just started, but we'll be building an Ansible collection for 
-managing an Elkarbackup server with ansible, using Elkarbackup REST API due to
-be released with Elkarbackup v2.1.0
+This is an Ansible collection for managing an Elkarbackup server using Elkarbackup REST API.
+
+Requires Elkarbackup v2.1.0+
+
+Currently supports:
+- Client creation, deletion and update
+- Job creation, deletion and update

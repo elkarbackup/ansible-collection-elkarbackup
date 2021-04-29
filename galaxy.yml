@@ -1,0 +1,12 @@
+namespace: "elkarbackup"
+name: "elkarbackup"
+version: "0.1.0"
+readme: "README.md"
+authors:
+    - "Eneko Lacunza - Binovo IT Human Project SL <elacunza@binovo.es>"
+description: "Elkarbackup server management through REST API"
+license:
+    - "GPL-3.0-or-later"
+tags:
+    - collection
+repository: "https://www.github.com/elkarbackup/ansible-collection-elkarbackup"
