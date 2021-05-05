@@ -143,9 +143,6 @@ api_result:
     sample: {"detail": "Script \"1\" is not a client pre script", "title": "An error occurred"}
 '''
 
-from compose import state
-import json
-import sys
 from ansible.module_utils.basic import AnsibleModule
 import requests
 from requests.auth import HTTPBasicAuth
