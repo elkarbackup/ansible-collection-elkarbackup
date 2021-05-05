@@ -47,11 +47,11 @@ options:
         type: string
     exclude:
         description: Exclude pattern.
-        default: ''
+        default: null
         type: string
     include:
         description: Include pattern.
-        default: ''
+        default: null
         type: string    
     is_active:
         description: Job activation status.
@@ -226,8 +226,8 @@ def run_module():
         backup_location=dict(type='int', required=False, default=1),
         client_name=dict(type='str', default=''),
         description=dict(type='str', required=False, default=''),
-        exclude=dict(type='str', required=False, default=''),
-        include=dict(type='str', required=False, default=''),
+        exclude=dict(type='str', required=False, default=None),
+        include=dict(type='str', required=False, default=None),
         is_active=dict(type='bool', required=False, default=True),
         min_notification_level=dict(type='int', required=False, default=0),
         name=dict(type='str', required=True),
