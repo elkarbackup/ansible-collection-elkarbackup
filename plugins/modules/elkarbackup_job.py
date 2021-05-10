@@ -67,7 +67,7 @@ options:
         type: str
     notifications_email:
         description: Email destination for notifications
-        default: ''
+        default: null
         type: str  
     notifications_to:
         description: Notification email recipients
@@ -231,7 +231,7 @@ def run_module():
         is_active=dict(type='bool', required=False, default=True),
         min_notification_level=dict(type='int', required=False, default=0),
         name=dict(type='str', required=True),
-        notifications_email=dict(type='str', required=False, default=''),
+        notifications_email=dict(type='str', required=False, default=None),
         notifications_to=dict(type='list', elements='str', required=False, default=''),
         path=dict(type='str', default=''),
         policy=dict(type='int', required=False, default=1),
