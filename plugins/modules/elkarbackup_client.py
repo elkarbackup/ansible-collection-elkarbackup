@@ -125,9 +125,9 @@ EXAMPLES = r'''
 
 RETURN = r'''
 id:
-    description: Created or updated client ID.
+    description: Created, updated or existing client ID.
     type: int
-    returned: when state==present and client has been created or updated
+    returned: when state==present and client has been created, updated or not updated because of no changed values
     sample: 1
 api_result:
     description: The result given by the API.
@@ -263,6 +263,7 @@ def run_module():
                     module.fail_json(msg='Client update failed', **result)
             else:
                 result['changed'] = False
+                result['id'] = client['id']
         else:
             client = {
                 'description': module.params['description'],
