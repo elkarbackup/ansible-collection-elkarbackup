@@ -215,7 +215,7 @@ def run_module():
     api_password = module.params['api_password']
     if module.params['state'] == 'present':
         client = get_client_by_name(api_url, api_user, api_password, module.params['name'])
-        if not client is None:
+        if client is not None:
             changed = False
             client['quota'] = int(client['quota'])
             if client['description'] != module.params['description']:
@@ -287,7 +287,7 @@ def run_module():
                 module.fail_json(msg='Client creation failed', **result)
     elif module.params['state'] == 'absent':
         client = get_client_by_name(api_url, api_user, api_password, module.params['name'])
-        if not client is None:
+        if client is not None:
             ok = delete_client(api_url, api_user, api_password, client['id'])
             if type(ok) is bool and ok:
                 result['changed'] = True

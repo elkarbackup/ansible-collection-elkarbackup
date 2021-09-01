@@ -261,7 +261,7 @@ def run_module():
             result['api_result'] = dict(title='Client name not found', detail='Client name '+module.params['client_name']+' not found')
             module.fail_json(msg='Play failed', **result)
         job = get_job_by_name(api_url, api_user, api_password, module.params['name'])
-        if not job is None:
+        if job is not None:
             changed = False
             if job['backupLocation'] != module.params['backup_location']:
                 job['backupLocation'] = module.params['backup_location']
@@ -351,7 +351,7 @@ def run_module():
                 module.fail_json(msg='Job creation failed', **result)
     elif module.params['state'] == 'absent':
         job = get_job_by_name(api_url, api_user, api_password, module.params['name'])
-        if not job is None:
+        if job is not None:
             ok = delete_job(api_url, api_user, api_password, job['id'])
             if type(ok) is bool and ok:
                 result['changed'] = True
