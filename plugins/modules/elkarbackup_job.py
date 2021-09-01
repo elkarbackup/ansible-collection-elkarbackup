@@ -36,11 +36,11 @@ options:
     backup_location:
         description: Backup location ID.
         default: 1
-        type: int    
+        type: int
     client_name:
         description: Job will be created/updated/removed from the client with this name.
         required: true
-        type: string    
+        type: string
     description:
         description: Job description.
         default: ''
@@ -52,7 +52,7 @@ options:
     include:
         description: Include pattern.
         default: null
-        type: string    
+        type: string
     is_active:
         description: Job activation status.
         default: True
@@ -60,7 +60,7 @@ options:
     min_notification_level:
         description: Email notification level
         default: 0
-        type: int    
+        type: int
     name:
         description: Name for job.
         required: true
@@ -68,7 +68,7 @@ options:
     notifications_email:
         description: Email destination for notifications
         default: null
-        type: str  
+        type: str
     notifications_to:
         description: Notification email recipients
         type: list
@@ -81,7 +81,7 @@ options:
     policy:
         description: Policy ID.
         default: 1
-        type: int    
+        type: int
     post_scripts:
         description: Postscript IDs active for this job.
         default: []
@@ -98,7 +98,7 @@ options:
         description: Enable local permissions on backup
         default: ''
         type: str
-        
+
 author:
     - Eneko Lacunza - Binovo IT Human Project SL (@elacunza)
 '''
@@ -185,11 +185,11 @@ def delete_job(api_url, api_user, api_password, id):
     if response:
         return True
     else:
-        return response 
+        return response
 
 
 def get_client_by_name(api_url, api_user, api_password, name):
-    query = { 'name': name }
+    query = {'name': name}
     response = requests.get(api_url + "/api/clients.json", auth=HTTPBasicAuth(api_user, api_password), params=query)
     clients = response.json()
     if len(clients) == 1:
@@ -198,13 +198,13 @@ def get_client_by_name(api_url, api_user, api_password, name):
         for c in clients:
             if c['name'] == name:
                 return c
-        return None 
+        return None
     else:
         return None
 
 
 def get_job_by_name(api_url, api_user, api_password, name):
-    query = { 'name': name }
+    query = {'name': name}
     response = requests.get(api_url + "/api/jobs.json", auth=HTTPBasicAuth(api_user, api_password), params=query)
     jobs = response.json()
     if len(jobs) == 1:
@@ -213,7 +213,7 @@ def get_job_by_name(api_url, api_user, api_password, name):
         for j in jobs:
             if j['name'] == name:
                 return j
-        return None 
+        return None
     else:
         return None
 
@@ -298,7 +298,7 @@ def run_module():
                 changed = True
             if job['policy'] != module.params['policy']:
                 job['policy'] = module.params['policy']
-                changed = True            
+                changed = True
             if set(job['postScripts']) != set(module.params['post_scripts']):
                 job['postScripts'] = module.params['post_scripts']
                 changed = True
@@ -357,11 +357,11 @@ def run_module():
                 result['changed'] = True
             else:
                 result['changed'] = False
-                result['api_result'] = ok 
+                result['api_result'] = ok
                 module.fail_json(msg='Job deletion failed', **result)
         else:
             result['changed'] = False
-        
+
     module.exit_json(**result)
 
 
@@ -381,4 +381,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

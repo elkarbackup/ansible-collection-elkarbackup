@@ -82,7 +82,7 @@ options:
         description: Access URL for client, as per Elkarbackup details.
         default: ''
         type: str
-        
+
 author:
     - Eneko Lacunza - Binovo IT Human Project SL (@elacunza)
 '''
@@ -150,7 +150,6 @@ from requests.auth import HTTPBasicAuth
 __metaclass__ = type
 
 
-
 def create_client(api_url, api_user, api_password, client):
     response = requests.post(api_url + "/api/clients.json", auth=HTTPBasicAuth(api_user, api_password), json=client)
     new_client = response.json()
@@ -165,11 +164,11 @@ def delete_client(api_url, api_user, api_password, id):
     if response:
         return True
     else:
-        return response 
+        return response
 
 
 def get_client_by_name(api_url, api_user, api_password, name):
-    query = { 'name': name }
+    query = {'name': name}
     response = requests.get(api_url + "/api/clients.json", auth=HTTPBasicAuth(api_user, api_password), params=query)
     clients = response.json()
     if len(clients) == 1:
@@ -178,7 +177,7 @@ def get_client_by_name(api_url, api_user, api_password, name):
         for c in clients:
             if c['name'] == name:
                 return c
-        return None 
+        return None
     else:
         return None
 
@@ -294,11 +293,11 @@ def run_module():
                 result['changed'] = True
             else:
                 result['changed'] = False
-                result['api_result'] = ok 
+                result['api_result'] = ok
                 module.fail_json(msg='Client deletion failed', **result)
         else:
             result['changed'] = False
-        
+
     module.exit_json(**result)
 
 
@@ -318,4 +317,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
